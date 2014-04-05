@@ -2,7 +2,7 @@ NAME
     SHARYANTO::Module::Util - Module-related utilities
 
 VERSION
-    version 0.03
+    version 0.04
 
 SYNOPSIS
      use SHARYANTO::Module::Util qw(
@@ -28,11 +28,20 @@ FUNCTIONS
         management strips the packlist), or if a dist contains both
         pure-Perl and XS.
 
-    *   Looking at the source file for usage of "XSLoader"
+    *   Looking at the source file for usage of "XSLoader" or "DynaLoader"
 
-        If the module source code has something like "use XSLoader;" then it
-        is assumed to be an XS module. This is currently implemented using a
-        simple regex, so it is somewhat brittle.
+        If the module source code has something like "use XSLoader;" or <use
+        DynaLoader;> then it is assumed to be an XS module. This is
+        currently implemented using a simple regex, so it is somewhat
+        brittle.
+
+    *   Guessing from the name
+
+        If the module has "XS" in its name then it's assumed to be an XS
+        module. If the module has "PP" in its name, it's assumed to be a
+        pure-Perl module.
+
+        Known false positives will be prevented in the future.
 
     Other methods will be added in the future (e.g. a database like in
     Module::CoreList, consulting MetaCPAN, etc).
@@ -42,6 +51,10 @@ FUNCTIONS
     *   warn => BOOL (default: 0)
 
         If set to true, will warn to STDERR if fail to determine.
+
+    *   debug => BOOL (default: 0)
+
+        If set to true will print debugging message to STDERR.
 
   is_pp($mod, \%opts) => BOOL
     The opposite of "is_xs", return true if module $mod is a pure Perl
