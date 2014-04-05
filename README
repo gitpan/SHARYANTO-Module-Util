@@ -2,7 +2,7 @@ NAME
     SHARYANTO::Module::Util - Module-related utilities
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
      use SHARYANTO::Module::Util qw(

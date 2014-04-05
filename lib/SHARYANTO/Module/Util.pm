@@ -56,7 +56,7 @@ sub is_xs {
         return 0;
     }
 
-    warn "Can't determine whether $mod is XS: all methods tried\n";
+    warn "Can't determine whether $mod is XS: all methods tried\n" if $warn;
     undef;
 }
 
@@ -67,7 +67,7 @@ sub is_pp {
     !$is_xs;
 }
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 1;
 # ABSTRACT: Module-related utilities
@@ -84,7 +84,7 @@ SHARYANTO::Module::Util - Module-related utilities
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
